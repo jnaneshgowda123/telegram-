@@ -1,0 +1,17 @@
+$long_url = urlencode('yourdestinationlink.com');
+
+$api_token = 'c51efe6ef1170ab521cf9a1db3f7e15e730e0560';
+
+$api_url = "https://hypelinks.tk/api?api={$api_token}&url={$long_url}&alias=CustomAlias";
+
+$result = @json_decode(file_get_contents($api_url),TRUE);
+
+if($result["status"] === 'error') {
+
+ echo $result["message"];
+
+} else {
+
+ echo $result["shortenedUrl"];
+
+}
